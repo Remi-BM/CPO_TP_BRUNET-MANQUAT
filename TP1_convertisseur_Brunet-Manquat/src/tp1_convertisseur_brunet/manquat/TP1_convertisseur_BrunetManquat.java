@@ -43,19 +43,48 @@ public class TP1_convertisseur_BrunetManquat {
     
     public static double FarenheitVersKelvin(double tFarenheit){
         double tKelvin;
-        tKelvin=()
+        tKelvin=CelciusVersKelvin(FarenheitVersCelcius(tFarenheit));
+        return tKelvin;
     }
     
     public static void main(String[] args) {
         // Saisis de la valeur
         double valeur;
         Scanner sc= new Scanner(System.in);
-        System.out.println("Saisissez une valeure réelle :");
+        System.out.println("Bonjour, saisissez une valeure réelle :");
         valeur=sc.nextDouble();
         
-        // Affichage de la valeur en kelvin
-        double valeurK=CelciusVersKelvin(valeur);
-        System.out.println("\nLa valeur en Kelvin est : "+valeurK+" K");
+        // Affichage de la selection
+        System.out.println("\nSaisissez la conversion que vous souhaiter effectuer :\n1) De Celcius vers Kelvin\n2) De Kelvin vers Celcius\n3) De Farenheit vers Celcius\n4) De Celcius vers Farenheit\n5) De Kelvin vers Farenheit\n6) De Farenheit vers Kelvin");
+        int selection;
+        selection=sc.nextInt();
+        
+        // Calcul conversion
+        double resultat;
+        if (selection==1){
+            resultat=CelciusVersKelvin(valeur);
+            System.out.println(valeur+"°C est égal à "+resultat+"K");
+        }
+        else if (selection==2){
+            resultat=KelvinVersCelcius(valeur);
+            System.out.println(valeur+"K est égal à "+resultat+"°C");
+        }
+        else if (selection==3){
+            resultat=FarenheitVersCelcius(valeur);
+            System.out.println(valeur+"°F est égal à "+resultat+"°C");
+        }
+        else if (selection==4){
+            resultat=CelciusVersFarenheit(valeur);
+            System.out.println(valeur+"°C est égal à "+resultat+"°F");
+        }
+        else if (selection==5){
+            resultat=KelvinVersFarenheit(valeur);
+            System.out.println(valeur+"K est égal à "+resultat+"°F");
+        }
+        else if (selection==6){
+            resultat=FarenheitVersKelvin(valeur);
+            System.out.println(valeur+"°F est égal à "+resultat+"K");
+        }  
         
     }
     
