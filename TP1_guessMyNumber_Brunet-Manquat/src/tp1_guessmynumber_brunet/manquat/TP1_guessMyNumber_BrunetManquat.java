@@ -91,10 +91,38 @@ public class TP1_guessMyNumber_BrunetManquat {
                     System.out.println("Gagné");
                     System.out.println("Vous avez mis : " + compteur + " coups");
                 }                
+            }            
+        }       
+        else if (difficulte == 4) {
+            // Génération nb à trouver
+            Random generateurAleat = new Random();
+            int nb_gen = generateurAleat.nextInt(100);
+
+            //Saisis et boucle
+            int valeur = 1000; // on choisit une valeure qui ne peut pas être générer
+            int compteur = 0;
+            while (valeur != nb_gen) {
+                int proba = generateurAleat.nextInt(3);                
+                System.out.println("Bonjour, saisissez une valeure entière entre 0 et 100 :");
+                valeur = sc.nextInt();
+                compteur += 1;
+                if (valeur > nb_gen && proba!=0) {
+                    System.out.println("Trop grand");
+                }
+                else if (valeur > nb_gen && proba==0) {
+                    System.out.println("Trop petit");
+                }
+                else if (valeur < nb_gen && proba!=0) {
+                    System.out.println("Trop petit");
+                }
+                else if (valeur < nb_gen && proba==0){
+                    System.out.println("Trop grand");
+                }
             }
+            System.out.println("Gagné");
+            System.out.println("Vous avez mis : " + compteur + " coups");
             
-        } 
+        }
         
     }
-
 }
