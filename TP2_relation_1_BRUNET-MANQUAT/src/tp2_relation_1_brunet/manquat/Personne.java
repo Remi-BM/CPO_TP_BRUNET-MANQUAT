@@ -10,13 +10,15 @@ package tp2_relation_1_brunet.manquat;
 public class Personne {
     String nom;
     String prenom;
+    Voiture liste_voitures []=new Voiture[3];
+    int nbVoitures=0;
     
-    public String Personne(String unnom, String unprenom){
+    public Personne(String unnom, String unprenom){
         nom=unnom;
         prenom=unprenom;
-        String chainecara=nom+" "+prenom;
-        return chainecara;
     }
+    
+    //public boolean ajouter_voiture ()
     
     @Override
     public String toString(){

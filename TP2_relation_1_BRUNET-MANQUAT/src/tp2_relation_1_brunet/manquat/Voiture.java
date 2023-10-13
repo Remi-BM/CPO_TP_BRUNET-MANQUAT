@@ -3,6 +3,8 @@
  */
 package tp2_relation_1_brunet.manquat;
 
+import static java.lang.constant.ConstantDescs.NULL;
+
 /**
  *
  * @author rembr
@@ -11,13 +13,12 @@ public class Voiture {
     String Modele;
     String Marque;
     int PuissanceCV;
+    Personne proprietaire;
     
-    public String Voiture(String unModele, String uneMarque, int puissance){
+    public Voiture(String unModele, String uneMarque, int puissance){
     Modele=unModele;
     Marque=uneMarque;
     PuissanceCV=puissance;
-    String chainecara=Modele+" "+Marque+" "+PuissanceCV+" CV";
-    return chainecara;
     }
     
     @Override
