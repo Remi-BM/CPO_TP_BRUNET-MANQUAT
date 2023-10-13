@@ -19,6 +19,7 @@ public class Voiture {
     Modele=unModele;
     Marque=uneMarque;
     PuissanceCV=puissance;
+    proprietaire=null;
     }
     
     @Override
