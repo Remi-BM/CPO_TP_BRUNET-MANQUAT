@@ -3,6 +3,8 @@
  */
 package tp3_heroic_fantasy_brunet.manquat;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author rembr
@@ -13,7 +15,20 @@ public class TP3_Heroic_Fantasy_BRUNETMANQUAT {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Epee epee1=new Epee("Excalibur", 7,5);
+        Epee epee2=new Epee("Durandal",4,7);
+        Baton baton1=new Baton("Chêne",4,5);
+        Baton baton2=new Baton("Charme",5,6);
+        
+        ArrayList<Arme> tabArme=new ArrayList<Arme>();
+        tabArme.add(epee1);
+        tabArme.add(epee2);
+        tabArme.add(baton1);
+        tabArme.add(baton2);
+        
+        for (int i=0;i<tabArme.size();i++){
+            System.out.println(tabArme.get(i).toString());
+        }
     }
     
 }

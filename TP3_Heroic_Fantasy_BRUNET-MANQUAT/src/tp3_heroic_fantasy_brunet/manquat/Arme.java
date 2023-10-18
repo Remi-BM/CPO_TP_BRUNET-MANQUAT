@@ -7,7 +7,7 @@ package tp3_heroic_fantasy_brunet.manquat;
  *
  * @author rembr
  */
-public class Arme {
+public abstract class Arme {
     String nom;
     int nivAttaque;
         
@@ -27,7 +27,7 @@ public class Arme {
 
     @Override
     public String toString() {
-        return "Arme{" + "nom=" + nom + ", nivAttaque=" + nivAttaque + '}';
+        return "Arme{" + "Nom =" + nom + ", Niveau =" + nivAttaque + '}';
     }  
     
 }
