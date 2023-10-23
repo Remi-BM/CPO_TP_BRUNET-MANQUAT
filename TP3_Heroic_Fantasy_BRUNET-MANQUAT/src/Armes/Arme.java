@@ -1,15 +1,15 @@
 /*
  * Brunet-Manquat Rémi, TDC, TP3, 18/10/2023
  */
-package tp3_heroic_fantasy_brunet.manquat;
+package Armes;
 
 /**
  *
  * @author rembr
  */
 public abstract class Arme {
-    String nom;
-    int nivAttaque;
+    private String nom;
+    private int nivAttaque;
         
     public Arme(String nom, int nivAttaque){
         this.nom=nom;
@@ -25,6 +25,10 @@ public abstract class Arme {
         return nivAttaque;
     }
 
+    public String getNom() {
+        return nom;
+    }
+    
     @Override
     public String toString() {
         return "Arme{" + "Nom =" + nom + ", Niveau =" + nivAttaque + '}';

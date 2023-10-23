@@ -3,6 +3,12 @@
  */
 package tp3_heroic_fantasy_brunet.manquat;
 
+import Personnages.Personnage;
+import Personnages.Magicien;
+import Personnages.Guerrier;
+import Armes.Baton;
+import Armes.Arme;
+import Armes.Epee;
 import java.util.ArrayList;
 
 /**
@@ -28,6 +34,21 @@ public class TP3_Heroic_Fantasy_BRUNETMANQUAT {
         
         for (int i=0;i<tabArme.size();i++){
             System.out.println(tabArme.get(i).toString());
+        }
+        
+        Magicien mage1=new Magicien("Gandalf",65, true);
+        Magicien mage2=new Magicien("Garcimore",44, false);
+        Guerrier hero1=new Guerrier("Conan",78,false);
+        Guerrier hero2=new Guerrier("Lannister",45,true);
+        
+        ArrayList<Personnage> tabperso=new ArrayList<Personnage>();
+        tabperso.add(mage1);
+        tabperso.add(mage2);
+        tabperso.add(hero1);
+        tabperso.add(hero2);
+        
+        for (int i=0;i<tabperso.size();i++){
+            System.out.println(tabperso.get(i).toString());
         }
     }
     
