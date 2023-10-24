@@ -22,4 +22,8 @@ public class Baton extends Arme {
         }
                       
     }
+
+    public int getAge() {
+        return age;
+    }
 }

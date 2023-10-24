@@ -72,6 +72,60 @@ public class TP3_Heroic_Fantasy_BRUNETMANQUAT {
         
         // Question 54
         
+        System.out.print("\nLe nombre de personnages créés est : "+Personnage.nb_perso_cree);
+        System.out.println("Le nombre de magiciens créés est : "+Magicien.nb_magicien);
+        System.out.println("Le nombre de guerriers créés est : "+Guerrier.nb_guerrier);   
+        
+        hero1.seFatiguer();
+        System.out.println("\n"+hero1.toString());
+        if (hero1.estVivant()==true){
+            System.out.println("En vie !");
+        }
+        else{
+            System.out.println("Est mort !");
+        }
+        
+        hero1.attaquer(mage1);
+        System.out.println("\n"+hero1.toString());
+        System.out.println("\n"+mage1.toString());
+        
+        //Question 59
+        Epee epee_noir=new Epee("Ep_Noir", 9,10);
+        Epee epee_blanche=new Epee("Ep_Blanc", 6,8);
+        Baton baton_blanc=new Baton("Bat_Blanc",4,5);
+        Baton baton_noir=new Baton("Bat_Noir",6,3);
+        Magicien mage_debutant=new Magicien("Durandal",70,false);
+        Guerrier boblennon=new Guerrier("Boblennon",100,true);
+        
+        boblennon.Ajout_arme(epee_noir);
+        boblennon.Ajout_arme(baton_noir);
+        mage_debutant.Ajout_arme(epee_blanche);
+        mage_debutant.Ajout_arme(baton_blanc);
+        
+        boblennon.Equipe_arme("Ep_Noir");
+        mage_debutant.Equipe_arme("Ep_blanc");
+        
+        mage_debutant.attaquer(boblennon);
+        System.out.println(boblennon.toString());
+        System.out.println(mage_debutant.toString());
+        
+        boblennon.attaquer(mage_debutant);
+        System.out.println(boblennon.toString());
+        System.out.println(mage_debutant.toString());
+        
+        if (boblennon.estVivant()==true){
+            System.out.println("Bob est en vie !");
+        }
+        else{
+            System.out.println("Bob est mort !");
+        }
+        
+        if (mage_debutant.estVivant()==true){
+            System.out.println("Durandal est en vie !");
+        }
+        else{
+            System.out.println("Durandal est mort !");
+        }
     }
     
 }

@@ -19,6 +19,10 @@ public class Epee extends Arme {
             this.finesse=0;
         }              
     }
+
+    public int getFinesse() {
+        return finesse;
+    }
     
     
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Guerrier extends Personnage {
     private boolean Cheval;
-    static int nb_guerrier=0;
+    public static int nb_guerrier=0;
     
     public Guerrier (String nom, int nivVie, boolean Cheval){
         super(nom,nivVie);
@@ -38,5 +38,9 @@ public class Guerrier extends Personnage {
             }
         }
         return nb_epee;        
-    }     
+    }  
+
+    public boolean isCheval() {
+        return Cheval;
+    }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Magicien extends Personnage {
     private boolean Confirme;
-    static int nb_magicien=0;
+    public static int nb_magicien=0;
     
     public Magicien (String nom, int nivVie, boolean Confirme){
         super(nom,nivVie);
@@ -38,5 +38,9 @@ public class Magicien extends Personnage {
             }
         }
         return nb_baton;        
-    }    
+    } 
+
+    public boolean isConfirme() {
+        return Confirme;
+    }
 }
