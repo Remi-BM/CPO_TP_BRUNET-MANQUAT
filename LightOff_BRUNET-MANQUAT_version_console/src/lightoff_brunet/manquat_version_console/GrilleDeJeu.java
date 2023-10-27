@@ -80,10 +80,10 @@ public class GrilleDeJeu {
                     this.matriceCellule[i][i].activerCellule();
                 }
             } else {
-                for (int i = cellule_a_parcourir - 1; i >= 0; i--) {
+                for (int i = 0; i < cellule_a_parcourir; i++) {
                     for (int j = 0; j < cellule_a_parcourir; j++) {
-                        if (j == i) {
-                            this.matriceCellule[i][i].activerCellule();
+                        if (cellule_a_parcourir - i - 1 == j) {
+                            this.matriceCellule[i][j].activerCellule();
                         }
                     }
                 }
@@ -122,7 +122,7 @@ public class GrilleDeJeu {
      */
     public void activerColonneDeCellules(int idColonne) {
         for (int i = 0; i < this.nbLignes; i++) {
-            this.matriceCellule[idColonne][i].activerCellule();
+            this.matriceCellule[i][idColonne].activerCellule();
         }
     }
 
@@ -143,34 +143,71 @@ public class GrilleDeJeu {
      */
     public void activerDiagonaleMontante() {
         int cellule_a_parcourir = Math.min(this.nbLignes, this.nbColonnes);
-        for (int i = cellule_a_parcourir - 1; i >= 0; i--) {
+        for (int i = 0; i < cellule_a_parcourir; i++) {
             for (int j = 0; j < cellule_a_parcourir; j++) {
-                if (j == i) {
-                    this.matriceCellule[i][i].activerCellule();
+                if (cellule_a_parcourir - i - 1 == j) {
+                    this.matriceCellule[i][j].activerCellule();
                 }
             }
         }
     }
-    
+
     /**
-     * Permet de vérifier si toutes les cellules de la grille sont éteintes. 
+     * Permet de vérifier si toutes les cellules de la grille sont éteintes.
      * Elle retourne true si toutes les cellules sont éteintes, et false sinon.
      */
-    public boolean cellulesToutesEteintes(){
-        int verif=0;
-        for (int i=0; i<this.nbLignes;i++){
-            for (int j=0; j<this.nbColonnes;j++){
-                if (this.matriceCellule[i][j].estEteint()==false){
-                    verif+=1;
+    public boolean cellulesToutesEteintes() {
+        int verif = 0;
+        for (int i = 0; i < this.nbLignes; i++) {
+            for (int j = 0; j < this.nbColonnes; j++) {
+                if (this.matriceCellule[i][j].estEteint() == false) {
+                    verif += 1;
                 }
             }
         }
-        if (verif!=0){
+        if (verif != 0) {
             return false;
-        }
-        else{
+        } else {
             return true;
         }
     }
 
+    /**
+     * Permer d'afficher l'état de la grille sous forme d'une représentation
+     * visuelle organisée. Elle crée une chaîne de caractères avec des indices
+     * pour les lignes et les colonnes, ainsi que des caractères "X" et "O" pour
+     * représenter l'état des cellules.
+     *
+     * @return correspond à la grille de jeu à afficher
+     */
+    @Override
+    public String toString() {
+        String grille = "   |"; // initialistaion de la première ligne
+        for (int i = 0; i < this.nbColonnes; i++) {
+            grille += " " + i + " |";
+        }
+
+        grille += "\n";
+        for (int i = 0; i < this.nbColonnes + 1; i++) {
+            grille += "----";
+        }
+
+        for (int i = 0; i < this.nbLignes * 2; i++) {
+            grille += "\n";
+            if (i % 2 == 0) {
+                for (int j = 0; j < this.nbColonnes + 1; j++) {
+                    if (j == 0) {
+                        grille += " " + i / 2 + " |";
+                    } else {
+                        grille += " " + this.matriceCellule[i / 2][j - 1].toString() + " |";
+                    }
+                }
+            } else {
+                for (int j = 0; j < this.nbColonnes + 1; j++) {
+                    grille += "----";
+                }
+            }
+        }
+        return grille;
+    }
 }

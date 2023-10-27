@@ -13,17 +13,27 @@ public class LightOff_BRUNETMANQUAT_version_console {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CelluleLumineuse ampoule1=new CelluleLumineuse();
+        GrilleDeJeu GrilleDeCellules=new GrilleDeJeu(5,5);
+        System.out.println(GrilleDeCellules.toString());
         
-        ampoule1.activerCellule();
-        System.out.println(ampoule1);
         
-        ampoule1.eteindreCellule();
-        System.out.println(ampoule1);
         
-        System.out.println(ampoule1.estEteint());
-        boolean etat=ampoule1.getEtat();
-        System.out.println(etat);
+        
+        GrilleDeCellules.activerDiagonaleMontante();
+        GrilleDeCellules.activerDiagonaleDescendante();
+        GrilleDeCellules.activerLigneDeCellules(0);
+        GrilleDeCellules.activerColonneDeCellules(0);
+        System.out.println("\n"+GrilleDeCellules.toString());
+        
+        
+        System.out.println(GrilleDeCellules.cellulesToutesEteintes());
+        
+        GrilleDeCellules.eteindreToutesLesCellules();
+        System.out.println("\n"+GrilleDeCellules.toString());
+        System.out.println(GrilleDeCellules.cellulesToutesEteintes());
+        
+        GrilleDeCellules.melangerMatriceAleatoirement(10);
+        System.out.println("\n"+GrilleDeCellules.toString());
     }
     
 }
