@@ -15,8 +15,7 @@ public class GrilleDeJeu {
 
     CelluleLumineuse[][] matriceCellule;
     int nbLignes;
-    int nbColonnes;
-    CelluleLumineuse[][] matriceCellules;
+    int nbColonnes;    
 
     /**
      * Ce constructeur permet de créer une nouvelle grille de cellules
