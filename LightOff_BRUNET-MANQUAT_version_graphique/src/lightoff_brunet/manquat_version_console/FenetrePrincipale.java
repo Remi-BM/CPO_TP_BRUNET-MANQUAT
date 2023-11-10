@@ -18,6 +18,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int nbCoups;
     int i;
+
     /**
      * Creates new form FenetrePrincipale
      */
@@ -43,12 +44,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 1 * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
-        
+
         // création du panneau de boutons verticaux (pour les lignes)
-        for ( i = 0; i < nbLignes; i++) {
+        for (i = 0; i < nbLignes; i++) {
             JButton bouton_ligne = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
@@ -60,19 +62,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             PanneauBoutonsVerticaux.add(bouton_ligne);
 
         }
-        
-        
-        
+
         PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, nbColonnes));
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, nbColonnes * 40, 1 * 40));
         this.pack();
         this.revalidate();
-        
+
         // création du panneau de boutons verticaux (pour les lignes)
-        for ( i = 0; i < nbColonnes; i++) {
+        for (i = 0; i < nbColonnes; i++) {
             JButton bouton_colonne = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     grille.activerColonneDeCellules(j);
@@ -84,13 +85,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             PanneauBoutonsHorizontaux.add(bouton_colonne);
 
         }
-        
+
         getContentPane().add(btnDiagDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10,
                 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
-        
-        getContentPane().add(btnDiagMont, new org.netbeans.lib.awtextra.AbsoluteConstraints(120+nbColonnes*40, 10,
+
+        getContentPane().add(btnDiagMont, new org.netbeans.lib.awtextra.AbsoluteConstraints(120 + nbColonnes * 40, 10,
                 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
@@ -106,12 +107,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         if (this.grille.cellulesToutesEteintes() == true) {
             btnDiagMont.setEnabled(false);
             btnDiagDesc.setEnabled(false);
-            System.out.println("Vous avez gagné !");
-            System.exit(0);
+            
+            // fermer la fenetre principale
+            this.dispose();
+            
+            // ouvrir la fenetre de victoire
+            FenetreVictoire f = new FenetreVictoire();
+            f.setVisible(true);            
         }
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
