@@ -15,9 +15,16 @@ public class FenetreVictoire extends javax.swing.JFrame {
     /**
      * Creates new form FenetreVictoire
      */
-    public FenetreVictoire() {
+    public FenetreVictoire(int Difficulte,int nbCoups, String temps) {
         initComponents();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        if (Difficulte==5){
+           Temps.setText("Votre temps est de "+temps); 
+        }else{
+           Temps.setVisible(false);
+        }  
+        Nbcoups.setText("Vous avez fais "+nbCoups+" coups");
+        this.setSize(1280, 720);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +39,8 @@ public class FenetreVictoire extends javax.swing.JFrame {
         TexteVictoire = new javax.swing.JLabel();
         btnRejouer = new javax.swing.JButton();
         btnQuitter = new javax.swing.JButton();
+        Temps = new javax.swing.JLabel();
+        Nbcoups = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +60,10 @@ public class FenetreVictoire extends javax.swing.JFrame {
             }
         });
 
+        Temps.setText("Temps");
+
+        Nbcoups.setText("Nbcoups");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,8 +77,13 @@ public class FenetreVictoire extends javax.swing.JFrame {
                         .addGap(83, 83, 83)
                         .addComponent(btnRejouer)
                         .addGap(54, 54, 54)
-                        .addComponent(btnQuitter)))
-                .addContainerGap(119, Short.MAX_VALUE))
+                        .addComponent(btnQuitter))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Temps, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Nbcoups, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +94,11 @@ public class FenetreVictoire extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRejouer)
                     .addComponent(btnQuitter))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(Temps)
+                .addGap(18, 18, 18)
+                .addComponent(Nbcoups)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -125,12 +147,14 @@ public class FenetreVictoire extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetreVictoire().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Nbcoups;
+    private javax.swing.JLabel Temps;
     private javax.swing.JLabel TexteVictoire;
     private javax.swing.JButton btnQuitter;
     private javax.swing.JButton btnRejouer;

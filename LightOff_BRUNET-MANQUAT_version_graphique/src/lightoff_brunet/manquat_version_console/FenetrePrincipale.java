@@ -155,7 +155,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 this.dispose();
 
                 // ouvrir la fenetre de victoire
-                FenetreVictoire f = new FenetreVictoire();
+                FenetreVictoire f = new FenetreVictoire(this.difficulte,this.nbCoups,"");
                 f.setVisible(true);
             } else if (this.nbCoups == this.nbCoupsMax) {
                 btnDiagMont.setEnabled(false);
@@ -165,7 +165,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 this.dispose();
 
                 // ouvrir la fenetre de defaite
-                FenetreDefaite f = new FenetreDefaite();
+                FenetreDefaite f = new FenetreDefaite(this.nbCoups);
                 f.setVisible(true);
             }
         } else if (this.difficulte == 5) {
@@ -187,7 +187,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 this.dispose();
 
                 // ouvrir la fenetre de victoire
-                FenetreVictoire f = new FenetreVictoire();
+                FenetreVictoire f = new FenetreVictoire(this.difficulte,this.nbCoups,tempsFormate);
                 f.setVisible(true);
             }
         } else {
@@ -199,7 +199,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 this.dispose();
 
                 // ouvrir la fenetre de victoire
-                FenetreVictoire f = new FenetreVictoire();
+                FenetreVictoire f = new FenetreVictoire(this.difficulte,this.nbCoups,"");
                 f.setVisible(true);
             }
         }
