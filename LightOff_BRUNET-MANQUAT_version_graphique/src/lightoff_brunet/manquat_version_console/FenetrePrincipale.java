@@ -17,36 +17,35 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     GrilleDeJeu grille;
     int nbCoups;
+    int taille;
+    int nbCoupsMax;
     int i;
 
     /**
      * Creates new form FenetrePrincipale
      */
-    public FenetrePrincipale() {
+    public FenetrePrincipale(int ModeJeu) {              
         initComponents();
-        int nbLignes = 5;
-        int nbColonnes = 5;
-        this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        initialiserPartie();
-        PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
-        for (int i = 0; i < nbLignes; i++) {
-            for (int j = 0; j < nbColonnes; j++) {
+        initialiserPartie(ModeJeu);
+        PanneauGrille.setLayout(new GridLayout(this.taille, this.taille));
+        for (int i = 0; i < this.taille; i++) {
+            for (int j = 0; j < this.taille; j++) {
                 CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellule[i][j], 36, 36);
                 PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60,
-                nbColonnes * 40, nbLignes * 40));
+                this.taille * 40, this.taille * 40));
         this.pack();
         this.revalidate();
 
-        PanneauBoutonsVerticaux.setLayout(new GridLayout(nbLignes, 1));
-        getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 1 * 40, nbLignes * 40));
+        PanneauBoutonsVerticaux.setLayout(new GridLayout(this.taille, 1));
+        getContentPane().add(PanneauBoutonsVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 1 * 40, this.taille * 40));
         this.pack();
         this.revalidate();
 
         // création du panneau de boutons verticaux (pour les lignes)
-        for (i = 0; i < nbLignes; i++) {
+        for (i = 0; i < this.taille; i++) {
             JButton bouton_ligne = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
@@ -63,13 +62,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         }
 
-        PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, nbColonnes));
-        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, nbColonnes * 40, 1 * 40));
+        PanneauBoutonsHorizontaux.setLayout(new GridLayout(1, this.taille));
+        getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, this.taille * 40, 1 * 40));
         this.pack();
         this.revalidate();
 
         // création du panneau de boutons verticaux (pour les lignes)
-        for (i = 0; i < nbColonnes; i++) {
+        for (i = 0; i < this.taille; i++) {
             JButton bouton_colonne = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
                 final int j = i;
@@ -91,16 +90,50 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.pack();
         this.revalidate();
 
-        getContentPane().add(btnDiagMont, new org.netbeans.lib.awtextra.AbsoluteConstraints(120 + nbColonnes * 40, 10,
+        getContentPane().add(btnDiagMont, new org.netbeans.lib.awtextra.AbsoluteConstraints(120 + this.taille * 40, 10,
                 1 * 40, 1 * 40));
         this.pack();
         this.revalidate();
 
     }
 
-    public void initialiserPartie() {
+    public void initialiserPartie(int NivDifficulte) {
+        if (NivDifficulte==0){ 
+          // niv facile
+          this.grille = new GrilleDeJeu(5,5);
+          this.taille=5;
+          this.nbCoupsMax=-1; // permet de savoir qu'on n'a pas de coups max
+        }else if (NivDifficulte==1){ 
+            // niv moyen
+            this.grille = new GrilleDeJeu(7,7);
+            this.taille=7;
+          this.nbCoupsMax=-1; // permet de savoir qu'on n'a pas de coups max
+        }else if (NivDifficulte==2){ 
+            // niv diff
+            this.grille = new GrilleDeJeu(9,9);
+            this.taille=9;
+            this.nbCoupsMax=-1; // permet de savoir qu'on n'a pas de coups max
+        }else if (NivDifficulte==3){ 
+            // niv challenge
+            this.grille = new GrilleDeJeu(7,7);
+            this.taille=7;
+            this.nbCoupsMax=15;
+        }else if (NivDifficulte==4){ 
+            // niv cauchemar
+            this.grille = new GrilleDeJeu(9,9);
+            this.taille=9;
+            this.nbCoupsMax=10;
+        }else{ 
+            // niv speedrun
+            this.grille = new GrilleDeJeu(7,7);
+            this.taille=7;
+            this.nbCoupsMax=-2; // permet de savoir qu'on n'a pas de coups max et qu'on est en speedrun (donc chrono)
+        }
         grille.eteindreToutesLesCellules();
-        grille.melangerMatriceAleatoirement(10);
+        while (this.grille.cellulesToutesEteintes()==true){
+            // permet de ne pas avoir de grille déjà toute éteinte
+            this.grille.melangerMatriceAleatoirement(10);
+        }
     }
 
     public void FinPartie() {
@@ -241,7 +274,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetrePrincipale().setVisible(true);
+                
             }
         });
     }
