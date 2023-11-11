@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 
 /**
  *
@@ -18,6 +19,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int nbCoups;
     int taille;
+    int difficulte;
     int nbCoupsMax;
     int i;
 
@@ -26,6 +28,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public FenetrePrincipale(int ModeJeu) {              
         initComponents();
+        this.difficulte=ModeJeu;
         initialiserPartie(ModeJeu);
         PanneauGrille.setLayout(new GridLayout(this.taille, this.taille));
         for (int i = 0; i < this.taille; i++) {

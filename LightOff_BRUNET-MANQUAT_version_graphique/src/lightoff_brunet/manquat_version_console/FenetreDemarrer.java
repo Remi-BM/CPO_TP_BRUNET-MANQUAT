@@ -177,6 +177,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         // Ouvrir la fenêtre principale avec le niveau de difficulté sélectionné
         FenetrePrincipale fenetrePrincipale = new FenetrePrincipale(0);
         fenetrePrincipale.setVisible(true);
+        
+        // Permet de mettre en pleine ecran
+        fenetrePrincipale.setExtendedState(JFrame.MAXIMIZED_BOTH);        
     }//GEN-LAST:event_btnFacileActionPerformed
 
     private void btnDifficileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDifficileActionPerformed
@@ -186,6 +189,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         // Ouvrir la fenêtre principale avec le niveau de difficulté sélectionné
         FenetrePrincipale fenetrePrincipale = new FenetrePrincipale(2);
         fenetrePrincipale.setVisible(true);
+        
+        // Permet de mettre en pleine ecran
+        fenetrePrincipale.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }//GEN-LAST:event_btnDifficileActionPerformed
 
     private void btnChallengeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChallengeActionPerformed
@@ -195,6 +201,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         // Ouvrir la fenêtre principale avec le niveau de difficulté sélectionné
         FenetrePrincipale fenetrePrincipale = new FenetrePrincipale(3);
         fenetrePrincipale.setVisible(true);
+        
+        // Permet de mettre en pleine ecran
+        fenetrePrincipale.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }//GEN-LAST:event_btnChallengeActionPerformed
 
     private void btnCauchemarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCauchemarActionPerformed
@@ -204,6 +213,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         // Ouvrir la fenêtre principale avec le niveau de difficulté sélectionné
         FenetrePrincipale fenetrePrincipale = new FenetrePrincipale(4);
         fenetrePrincipale.setVisible(true);
+        
+        // Permet de mettre en pleine ecran
+        fenetrePrincipale.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }//GEN-LAST:event_btnCauchemarActionPerformed
 
     private void btnMoyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoyenActionPerformed
@@ -213,6 +225,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         // Ouvrir la fenêtre principale avec le niveau de difficulté sélectionné
         FenetrePrincipale fenetrePrincipale = new FenetrePrincipale(1);
         fenetrePrincipale.setVisible(true);
+        
+        // Permet de mettre en pleine ecran
+        fenetrePrincipale.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }//GEN-LAST:event_btnMoyenActionPerformed
 
     private void btnSpeedrunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpeedrunActionPerformed
@@ -222,6 +237,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         // Ouvrir la fenêtre principale avec le niveau de difficulté sélectionné
         FenetrePrincipale fenetrePrincipale = new FenetrePrincipale(5);
         fenetrePrincipale.setVisible(true);
+        
+        // Permet de mettre en pleine ecran
+        fenetrePrincipale.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     }//GEN-LAST:event_btnSpeedrunActionPerformed
 
     private void btnQuitterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitterActionPerformed

@@ -4,6 +4,8 @@
  */
 package lightoff_brunet.manquat_version_console;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author rembr
@@ -15,6 +17,7 @@ public class FenetreVictoire extends javax.swing.JFrame {
      */
     public FenetreVictoire() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
