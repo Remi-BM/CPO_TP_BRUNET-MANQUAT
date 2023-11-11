@@ -63,7 +63,7 @@ public class Partie {
     
     
     public int selectionDifficulte(){
-        System.out.println("Selectionner la difficulté. (0 => Facile ; 1 => Moyenne ; 2 => Difficile ; 3 => Challenge ; 4 => Cauchemar ; 5 => Speedrun");
+        System.out.println("Selectionner la difficulté. (0 => Facile ; 1 => Moyenne ; 2 => Difficile ; 3 => Challenge ; 4 => Cauchemar ; 5 => Speedrun)");
         int difficulte=sc.nextInt(6);
         return difficulte;
     }
@@ -92,7 +92,7 @@ public class Partie {
                 this.nbCoupsMax-=1;
                 if (this.nbCoupsMax>0){
                     coupRest-=1;
-                    System.out.println("\nIl vous reste : "+coupRest+" à jouer !");
+                    System.out.println("\nIl vous reste : "+coupRest+" coups à jouer !");
                 }
                 System.out.println("\nVotre nombre de coups joués est de : "+this.nbCoups);
                 
@@ -104,7 +104,7 @@ public class Partie {
                 this.nbCoupsMax-=1;
                 if (this.nbCoupsMax>0){
                     coupRest-=1;
-                    System.out.println("\nIl vous reste : "+coupRest+" à jouer !");
+                    System.out.println("\nIl vous reste : "+coupRest+" coups à jouer !");
                 }
                 System.out.println("\nVotre nombre de coups joués est de : "+this.nbCoups);
                 
@@ -114,7 +114,7 @@ public class Partie {
                 this.nbCoupsMax-=1;
                 if (this.nbCoupsMax>0){
                     coupRest-=1;
-                    System.out.println("\nIl vous reste : "+coupRest+" à jouer !");
+                    System.out.println("\nIl vous reste : "+coupRest+" coups à jouer !");
                 }
                 System.out.println("\nVotre nombre de coups joués est de : "+this.nbCoups);
                 
@@ -124,7 +124,7 @@ public class Partie {
                 this.nbCoupsMax-=1;
                 if (this.nbCoupsMax>0){
                     coupRest-=1;
-                    System.out.println("\nIl vous reste : "+coupRest+" à jouer !");
+                    System.out.println("\nIl vous reste : "+coupRest+" coups à jouer !");
                 }
                 System.out.println("\nVotre nombre de coups joués est de : "+this.nbCoups);
                 
