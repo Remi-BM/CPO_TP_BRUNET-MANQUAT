@@ -14,8 +14,7 @@ public class LightOff_BRUNETMANQUAT_version_console {
      */
     public static void main(String[] args) {
         Partie Jeu=new Partie();
-        Jeu.initialiserPartie();
-        Jeu.lancerPartie();
+        Jeu.lancerPartie(); 
     }
     
 }
