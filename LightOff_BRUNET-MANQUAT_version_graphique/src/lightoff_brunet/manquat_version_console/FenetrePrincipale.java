@@ -21,14 +21,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     int taille;
     int difficulte;
     int nbCoupsMax;
+    long debut;
     int i;
 
     /**
      * Creates new form FenetrePrincipale
      */
-    public FenetrePrincipale(int ModeJeu) {              
+    public FenetrePrincipale(int ModeJeu) {
         initComponents();
-        this.difficulte=ModeJeu;
+        this.difficulte = ModeJeu;
         initialiserPartie(ModeJeu);
         PanneauGrille.setLayout(new GridLayout(this.taille, this.taille));
         for (int i = 0; i < this.taille; i++) {
@@ -98,59 +99,111 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.pack();
         this.revalidate();
 
+        if (this.difficulte == 5) {
+            this.debut = System.currentTimeMillis();
+        }
     }
 
     public void initialiserPartie(int NivDifficulte) {
-        if (NivDifficulte==0){ 
-          // niv facile
-          this.grille = new GrilleDeJeu(5,5);
-          this.taille=5;
-          this.nbCoupsMax=-1; // permet de savoir qu'on n'a pas de coups max
-        }else if (NivDifficulte==1){ 
+        this.nbCoups = 0;
+        if (NivDifficulte == 0) {
+            // niv facile
+            this.grille = new GrilleDeJeu(5, 5);
+            this.taille = 5;
+            this.nbCoupsMax = -1; // permet de savoir qu'on n'a pas de coups max
+        } else if (NivDifficulte == 1) {
             // niv moyen
-            this.grille = new GrilleDeJeu(7,7);
-            this.taille=7;
-          this.nbCoupsMax=-1; // permet de savoir qu'on n'a pas de coups max
-        }else if (NivDifficulte==2){ 
+            this.grille = new GrilleDeJeu(7, 7);
+            this.taille = 7;
+            this.nbCoupsMax = -1; // permet de savoir qu'on n'a pas de coups max
+        } else if (NivDifficulte == 2) {
             // niv diff
-            this.grille = new GrilleDeJeu(9,9);
-            this.taille=9;
-            this.nbCoupsMax=-1; // permet de savoir qu'on n'a pas de coups max
-        }else if (NivDifficulte==3){ 
+            this.grille = new GrilleDeJeu(9, 9);
+            this.taille = 9;
+            this.nbCoupsMax = -1; // permet de savoir qu'on n'a pas de coups max
+        } else if (NivDifficulte == 3) {
             // niv challenge
-            this.grille = new GrilleDeJeu(7,7);
-            this.taille=7;
-            this.nbCoupsMax=15;
-        }else if (NivDifficulte==4){ 
+            this.grille = new GrilleDeJeu(7, 7);
+            this.taille = 7;
+            this.nbCoupsMax = 15;
+        } else if (NivDifficulte == 4) {
             // niv cauchemar
-            this.grille = new GrilleDeJeu(9,9);
-            this.taille=9;
-            this.nbCoupsMax=10;
-        }else{ 
+            this.grille = new GrilleDeJeu(9, 9);
+            this.taille = 9;
+            this.nbCoupsMax = 10;
+        } else {
             // niv speedrun
-            this.grille = new GrilleDeJeu(7,7);
-            this.taille=7;
-            this.nbCoupsMax=-2; // permet de savoir qu'on n'a pas de coups max et qu'on est en speedrun (donc chrono)
+            this.grille = new GrilleDeJeu(7, 7);
+            this.taille = 7;
+            this.nbCoupsMax = -2; // permet de savoir qu'on n'a pas de coups max et qu'on est en speedrun (donc chrono)
         }
         grille.eteindreToutesLesCellules();
-        while (this.grille.cellulesToutesEteintes()==true){
+        while (this.grille.cellulesToutesEteintes() == true) {
             // permet de ne pas avoir de grille déjà toute éteinte
             this.grille.melangerMatriceAleatoirement(10);
         }
     }
 
     public void FinPartie() {
-        if (this.grille.cellulesToutesEteintes() == true) {
-            btnDiagMont.setEnabled(false);
-            btnDiagDesc.setEnabled(false);
-            
-            // fermer la fenetre principale
-            this.dispose();
-            
-            // ouvrir la fenetre de victoire
-            FenetreVictoire f = new FenetreVictoire();
-            f.setVisible(true);            
+        this.nbCoups += 1;
+        if (this.difficulte == 3 || this.difficulte == 4) {
+            if (this.grille.cellulesToutesEteintes() == true) {
+                btnDiagMont.setEnabled(false);
+                btnDiagDesc.setEnabled(false);
+
+                // fermer la fenetre principale
+                this.dispose();
+
+                // ouvrir la fenetre de victoire
+                FenetreVictoire f = new FenetreVictoire();
+                f.setVisible(true);
+            } else if (this.nbCoups == this.nbCoupsMax) {
+                btnDiagMont.setEnabled(false);
+                btnDiagDesc.setEnabled(false);
+
+                // fermer la fenetre principale
+                this.dispose();
+
+                // ouvrir la fenetre de defaite
+                FenetreDefaite f = new FenetreDefaite();
+                f.setVisible(true);
+            }
+        } else if (this.difficulte == 5) {
+            if (this.grille.cellulesToutesEteintes() == true) {
+                long fin = System.currentTimeMillis(); // permet d'avoir le temps d'arret du timer
+                long tempsEcoule = fin - this.debut; // permet d'avoir le temps de jeu
+
+                // permet de convertir le temps en ms pour  un affichage jolie
+                long minutes = tempsEcoule / (60 * 1000);
+                long secondes = (tempsEcoule % (60 * 1000)) / 1000;
+                long millisecondes = tempsEcoule % 1000;
+
+                // format d'affichage du temps
+                String tempsFormate = String.format("%02dmin %02ds %03dms", minutes, secondes, millisecondes);
+                btnDiagMont.setEnabled(false);
+                btnDiagDesc.setEnabled(false);
+
+                // fermer la fenetre principale
+                this.dispose();
+
+                // ouvrir la fenetre de victoire
+                FenetreVictoire f = new FenetreVictoire();
+                f.setVisible(true);
+            }
+        } else {
+            if (this.grille.cellulesToutesEteintes() == true) {
+                btnDiagMont.setEnabled(false);
+                btnDiagDesc.setEnabled(false);
+
+                // fermer la fenetre principale
+                this.dispose();
+
+                // ouvrir la fenetre de victoire
+                FenetreVictoire f = new FenetreVictoire();
+                f.setVisible(true);
+            }
         }
+
     }
 
     /**
@@ -277,7 +330,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
