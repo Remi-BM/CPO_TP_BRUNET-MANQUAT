@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Brunet-Manquat Rémi, TDC, Mini projet light off, 11/11/2023
  */
 package lightoff_brunet.manquat_version_console;
 
@@ -16,7 +15,18 @@ public class FenetreDemarrer extends javax.swing.JFrame {
      * Creates new form FenetreDemarrer
      */
     public FenetreDemarrer() {
-        initComponents();
+        initComponents();        
+        
+        getContentPane().add(txt_bienvenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 240,
+                200, 40));
+        this.pack();
+        this.revalidate();
+        
+        getContentPane().add(panel_btn_diff, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320,
+                400, 80));
+        this.pack();
+        this.revalidate();
+                
         this.setSize(1280, 720);
         this.setLocationRelativeTo(null);
     }
@@ -38,8 +48,8 @@ public class FenetreDemarrer extends javax.swing.JFrame {
         btnFacile = new javax.swing.JButton();
         btnSpeedrun = new javax.swing.JButton();
         txt_btn_difficulte = new javax.swing.JLabel();
-        txt_bienvenue = new javax.swing.JLabel();
         btnQuitter = new javax.swing.JButton();
+        txt_bienvenue = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +99,13 @@ public class FenetreDemarrer extends javax.swing.JFrame {
 
         txt_btn_difficulte.setText("Selectionnez le mode de jeu souhaité :");
 
+        btnQuitter.setText("Quitter");
+        btnQuitter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_btn_diffLayout = new javax.swing.GroupLayout(panel_btn_diff);
         panel_btn_diff.setLayout(panel_btn_diffLayout);
         panel_btn_diffLayout.setHorizontalGroup(
@@ -96,6 +113,9 @@ public class FenetreDemarrer extends javax.swing.JFrame {
             .addGroup(panel_btn_diffLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panel_btn_diffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_btn_diffLayout.createSequentialGroup()
+                        .addComponent(txt_btn_difficulte, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))
                     .addGroup(panel_btn_diffLayout.createSequentialGroup()
                         .addComponent(btnFacile)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -103,11 +123,10 @@ public class FenetreDemarrer extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDifficile)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnChallenge)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_btn_diffLayout.createSequentialGroup()
-                        .addComponent(txt_btn_difficulte, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)))
+                        .addGroup(panel_btn_diffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnQuitter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnChallenge, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(btnCauchemar)
                 .addGap(18, 18, 18)
                 .addComponent(btnSpeedrun)
@@ -126,46 +145,35 @@ public class FenetreDemarrer extends javax.swing.JFrame {
                     .addComponent(btnMoyen)
                     .addComponent(btnFacile)
                     .addComponent(btnSpeedrun))
-                .addGap(76, 76, 76))
+                .addGap(18, 18, 18)
+                .addComponent(btnQuitter)
+                .addGap(35, 35, 35))
         );
 
-        txt_bienvenue.setText("Bienvenue sur LightOff : Revenge of the Sith !");
-
-        btnQuitter.setText("Quitter");
-        btnQuitter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQuitterActionPerformed(evt);
-            }
-        });
+        txt_bienvenue.setText("Bienvenue sur LightOff  !");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(panel_btn_diff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(txt_bienvenue, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
-                        .addComponent(btnQuitter)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(panel_btn_diff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txt_bienvenue, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(261, 261, 261))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addComponent(txt_bienvenue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(panel_btn_diff, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(btnQuitter)
-                .addGap(32, 32, 32))
+                .addGap(44, 44, 44)
+                .addComponent(panel_btn_diff, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
         pack();

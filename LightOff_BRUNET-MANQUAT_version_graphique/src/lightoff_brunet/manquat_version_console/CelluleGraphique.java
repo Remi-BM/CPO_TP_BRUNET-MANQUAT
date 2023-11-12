@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Brunet-Manquat Rémi, TDC, Mini projet light off, 11/11/2023
  */
 package lightoff_brunet.manquat_version_console;
 

@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Brunet-Manquat Rémi, TDC, Mini projet light off, 11/11/2023
  */
 package lightoff_brunet.manquat_version_console;
 
@@ -18,9 +17,15 @@ public class FenetreDefaite extends javax.swing.JFrame {
      */
     public FenetreDefaite(int nbcoups) {
         initComponents();
+        Nbcoups.setText("Vous avez fais "+nbcoups+" coups");
+        
+        getContentPane().add(Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 320,
+                400, 400));
+        this.pack();
+        this.revalidate();
+                
         this.setSize(1280, 720);
         this.setLocationRelativeTo(null);
-        Nbcoups.setText("Vous avez fais "+nbcoups+" coups");
     }
 
     /**
@@ -32,14 +37,15 @@ public class FenetreDefaite extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Nbcoups = new javax.swing.JLabel();
+        Panel = new javax.swing.JPanel();
+        txt_defaite = new javax.swing.JLabel();
         btnRejouer = new javax.swing.JButton();
         btnQuitter = new javax.swing.JButton();
-        txt_defaite = new javax.swing.JLabel();
+        Nbcoups = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Nbcoups.setText("Nbcoups");
+        txt_defaite.setText("Vous avez perdu !");
 
         btnRejouer.setText("Rejouer");
         btnRejouer.addActionListener(new java.awt.event.ActionListener() {
@@ -55,40 +61,55 @@ public class FenetreDefaite extends javax.swing.JFrame {
             }
         });
 
-        txt_defaite.setText("Vous avez perdu !");
+        Nbcoups.setText("Nbcoups");
+
+        javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
+        Panel.setLayout(PanelLayout);
+        PanelLayout.setHorizontalGroup(
+            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Nbcoups, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelLayout.createSequentialGroup()
+                            .addGap(154, 154, 154)
+                            .addComponent(txt_defaite))
+                        .addGroup(PanelLayout.createSequentialGroup()
+                            .addGap(103, 103, 103)
+                            .addComponent(btnRejouer)
+                            .addGap(44, 44, 44)
+                            .addComponent(btnQuitter))))
+                .addContainerGap(111, Short.MAX_VALUE))
+        );
+        PanelLayout.setVerticalGroup(
+            PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txt_defaite)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(Nbcoups)
+                .addGap(18, 18, 18)
+                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRejouer)
+                    .addComponent(btnQuitter))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(100, Short.MAX_VALUE)
-                .addComponent(btnRejouer)
-                .addGap(51, 51, 51)
-                .addComponent(btnQuitter)
-                .addGap(119, 119, 119))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(Nbcoups, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(txt_defaite)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
-                .addComponent(txt_defaite)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnQuitter)
-                    .addComponent(btnRejouer))
-                .addGap(30, 30, 30)
-                .addComponent(Nbcoups)
-                .addGap(99, 99, 99))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(237, 237, 237))
         );
 
         pack();
@@ -144,6 +165,7 @@ public class FenetreDefaite extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nbcoups;
+    private javax.swing.JPanel Panel;
     private javax.swing.JButton btnQuitter;
     private javax.swing.JButton btnRejouer;
     private javax.swing.JLabel txt_defaite;

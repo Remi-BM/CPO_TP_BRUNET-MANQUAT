@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Brunet-Manquat Rémi, TDC, Mini projet light off, 11/11/2023
  */
 package lightoff_brunet.manquat_version_console;
 
@@ -29,8 +28,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
      */
     public FenetrePrincipale(int ModeJeu) {
         initComponents();
-        this.difficulte = ModeJeu;
+        this.difficulte = ModeJeu;              
         initialiserPartie(ModeJeu);
+        
+        // On initialise les boutons
+        if (this.difficulte==3 || this.difficulte==4){
+           txt_nbCoups_Rest.setText("Votre nombre de coups restant est de : "+(this.nbCoupsMax-this.nbCoups)); 
+        }else{
+           txt_nbCoups_Rest.setVisible(false);
+        }  
+        txt_nbCoups.setText("Votre nombre de coups est de : "+nbCoups);
+        
         PanneauGrille.setLayout(new GridLayout(this.taille, this.taille));
         for (int i = 0; i < this.taille; i++) {
             for (int j = 0; j < this.taille; j++) {
@@ -71,7 +79,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         this.pack();
         this.revalidate();
 
-        // création du panneau de boutons verticaux (pour les lignes)
+        // création du panneau de boutons horizontaux (pour les colonnes)
         for (i = 0; i < this.taille; i++) {
             JButton bouton_colonne = new JButton();
             ActionListener ecouteurClick = new ActionListener() {
@@ -146,6 +154,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     public void FinPartie() {
         this.nbCoups += 1;
+        
+        //On met à jour les boutons
+        if (this.difficulte==3 || this.difficulte==4){
+           txt_nbCoups_Rest.setText("Votre nombre de coups restant est de : "+(this.nbCoupsMax-this.nbCoups)); 
+        }else{
+           txt_nbCoups_Rest.setVisible(false);
+        }  
+        txt_nbCoups.setText("Votre nombre de coups est de : "+nbCoups);
+        
+        // On traite la fin de partie pour les différents modes de jeu
         if (this.difficulte == 3 || this.difficulte == 4) {
             if (this.grille.cellulesToutesEteintes() == true) {
                 btnDiagMont.setEnabled(false);
@@ -220,6 +238,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         btnDiagDesc = new javax.swing.JButton();
         PanneauBoutonsVerticaux = new javax.swing.JPanel();
         PanneauBoutonsHorizontaux = new javax.swing.JPanel();
+        txt_nbCoups = new javax.swing.JLabel();
+        txt_nbCoups_Rest = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -283,6 +303,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonsHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 360, 40));
 
+        txt_nbCoups.setText("Nb cps");
+        getContentPane().add(txt_nbCoups, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 240, -1));
+
+        txt_nbCoups_Rest.setText("Nb cps rest");
+        getContentPane().add(txt_nbCoups_Rest, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 240, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -341,5 +367,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JButton btnDiagDesc;
     private javax.swing.JButton btnDiagMont;
+    private javax.swing.JLabel txt_nbCoups;
+    private javax.swing.JLabel txt_nbCoups_Rest;
     // End of variables declaration//GEN-END:variables
 }
